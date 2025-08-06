@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cat Image with API</title>
+</head>
+<body>
+  <h1>See this naughty cat</h1>
+  <img id="catImage" src="c:\Users\ASUS ASUS\Downloads\loading-icon-on-black-vector-24544990.jpg" alt="Cute cat" width="300">
+  <br>
+  <button onclick="loadCat()">Get New Cat</button>
+
+  <script>
+    function loadCat() {
+      fetch('https://api.thecatapi.com/v1/images/search')
+        .then(response => response.json())
+        .then(data => {
+          const imageUrl = data[0].url;
+          document.getElementById('catImage').src = imageUrl;
+        })
+        .catch(error => {
+          console.error('Error fetching the cat image:', error);
+        });
+    }
+
+    // Load one cat image initially
+    loadCat();
+  </script>
+</body>
+</html>
