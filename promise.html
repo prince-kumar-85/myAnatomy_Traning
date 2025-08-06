@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise n Json</title>
+</head>
+<body>
+    <h1>Demo of promises and json</h1>
+    <button onclick="jsonDemo()">Click me</button>
+</body>
+<script>
+    console.log("hii")
+
+    
+
+    function jsonDemo(){
+        const person={
+        name :"Prince",
+        age:25,
+        isStudent:false,
+        hobbies:["reading", "coding", "gaming"],
+    }
+    console.log(typeof(person));
+    //convert our object to json.string
+    const jsonString=JSON.stringify(person);
+    console.log("Stringified JSON:",jsonString);
+     console.log(typeof(jsonString));
+     console.log(jsonString.toUpperCase());
+     console.log(jsonString.substring(9,15))
+
+     const parseOnj=JSON.parse(jsonString);
+        console.log("Parsed JSON:",parseOnj);
+    }
+    const person1={
+        "name":"MAx",
+        "age":30,
+        "hobbies":["reading", "gaming", "coding"],
+    }
+
+</script>
+</html>
