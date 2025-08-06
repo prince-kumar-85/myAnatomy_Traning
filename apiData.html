@@ -1,1 +1,59 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data from API</title>
+</head>
+<body>
+    <h1>I am getting data from an API</h1>
+    <h2 id="n">The Client name is: </h2>
+    <h2 id="e">The Client email is: </h2>
+    
+</body>
+<script>
+    //fetch and promise + api
+    //promise denotes something thst will happen in future
+    //pending state
+    //success / failure
+    //then /catch
+    let p=new Promise((resolve,reject)=>{
+        reject("404 error")
+    })
+    p.then((msg)=>{
+        console.og(msg)
+    }).catch((err)=>{
+        console.log(err)
+    })
+    console.log(p)
+
+    //simple promise in action
+    let  mycall=new Promise((res, rej)=>{
+        let num=3+22
+        if(num==5){
+            res("Success: The number is 5")
+        } else {
+            rej("Error: The number is not 5")
+        }
+
+    })
+    mycall.then((msg)=>{
+        console.log("Good news:", msg)
+    }).catch((err)=>{
+        console.log("Bad news:", err)
+    })
+
+   fetch("https://jsonplaceholder.typicode.com/users")
+   .then(res=> res.json())
+   .then(data=>{
+    console.log(data)  
+    let n= document.getElementById("n")
+    let e= document.getElementById("e")
+
+    n.textContent+=data[0].name;
+    e.textContent+=data[0].email;
+   })
+   
+</script>
+</html>
