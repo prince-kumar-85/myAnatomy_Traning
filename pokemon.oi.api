@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Go</title>
+</head>
+<body>
+    <center>
+        <h1>See the pokemon</h1>
+        <input id="poke" placeholder="enter pokemon name"><br><br>
+        <button onclick="myData()"> Get Pokemon    </button> <br><br>
+        <img src="#" alt="poke" id="p" style="display: none;">
+    </center>
+</body>
+<script>
+   async function myData(){
+        let pImage=document.getElementById("p");
+        let pokeName=document.getElementById("poke").value;
+        pokeName=pokeName.toLowerCase().trim();
+       let res= await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
+        .then((res)=>res.json())
+        .then(data=>{
+            
+            pImage.src=data.sprites.front_default;
+            pImage.style.display = "block";
+        }).catch(err=>{
+            console.log(err);
+            alert("Pokemon not found");
+            pImage.style.display="none";
+        });
+           
+        
+    }
+</script>
+</html>
